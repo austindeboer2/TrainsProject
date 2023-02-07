@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qxo7rVQYjprwMVIE3Ff3OS+ic1JjTRn7h0X0IRnRG+zapm7jGGl2WGDqLG/PeBzlDowGMfQjHcqoNJj7hI+vyA==",
+  "dgSpecHash": "EVVVLBKqOGn8A+H9BxhujIIjkwpHtBy6jO3ONqPFqaMAmU0ic1bQFYCICyEIoMcsiEzpn1/xXy2oTktmjMnW1A==",
   "success": true,
-  "projectFilePath": "\\\\win-fileB\\Staff\\ADeboer\\22-23\\TrainsProject\\Trains\\Trains\\Trains.csproj",
+  "projectFilePath": "\\\\win-fileB\\Staff\\ADeboer\\22-23\\TrainsProject\\Trains\\TrainsProject\\Trains\\Trains.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adeboer\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\adeboer\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

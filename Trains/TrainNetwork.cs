@@ -63,5 +63,22 @@ namespace Trains
 
             }
         }
+
+        /*
+         * RouteDistance(string) - calculates the weight of traveling on the given route
+         * Parameter:
+         *      string - a string of town names in the order that they will be traveled. 
+         *      Towns should have a '-' in between each other without any spaces.
+         * Return:
+         *      int - the weight value of traveling along the given route.
+         *            -1 will be returned if the route does not exist.
+         */
+
+        /*
+         * public int RouteDistance(string route)
+         * {
+         * 
+         * }
+         */
     }
 }
