@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Trains
 {
-    /*
-     * Class, TrainNetwork, contains all the information about the train network.
+    /* Class, TrainNetwork
+     * contains all the information about the train network.
      * This information is then used to provide methods to determine route distance, 
      * unique routes between towns, and the shortest route between towns. 
      */
@@ -21,8 +22,8 @@ namespace Trains
         private int[,] weights;
 
 
-        /*
-         * TrainNetwork Constructor
+        /* TrainNetwork Constructor
+         * 
          * Parameters:
          *      List<string> containing all the town names that are included in the network
          *      List<Connection> containing all of the one way town connections with weights
@@ -39,7 +40,7 @@ namespace Trains
             //All default values are set to 0.
             this.weights = new int[connections.Count, connections.Count];
 
-            foreach(Connection c in connections)
+            foreach (Connection c in connections)
             {
                 int start = 0;
                 int end = 0;
@@ -47,15 +48,15 @@ namespace Trains
 
                 //Loops though all the towns to make sure the correct towns are recorded 
                 //to mark the weight in the table.
-                for(int i = 0; i < towns.Length; i++)
+                for (int i = 0; i < towns.Length; i++)
                 {
                     if (c.GetStart().Equals(towns[i])) start = i;
-                    if(c.GetEnd().Equals(towns[i])) end = i;
+                    if (c.GetEnd().Equals(towns[i])) end = i;
                 }
 
                 //Checks to make sure that a bad connection was not given with that same
                 //starting and ending location
-                if(start != end)
+                if (start != end)
                 {
                     //Sets the weight of the connection in the corresponding space in the weights array.
                     weights[start, end] = weight;
@@ -64,21 +65,52 @@ namespace Trains
             }
         }
 
-        /*
-         * RouteDistance(string) - calculates the weight of traveling on the given route
+        /* RouteDistance(string)
+         * Calculates the weight of traveling on the given route
          * Parameter:
-         *      string - a string of town names in the order that they will be traveled. 
+         *      string, route - a string of town names in the order that they will be traveled. 
          *      Towns should have a '-' in between each other without any spaces.
          * Return:
          *      int - the weight value of traveling along the given route.
          *            -1 will be returned if the route does not exist.
          */
+        //TODO:
+        public int RouteDistance(string route)
+        {
+            return 0;//Temp
+        }
 
-        /*
-         * public int RouteDistance(string route)
-         * {
-         * 
-         * }
+
+        /* UniqueRoutes(string, string, int)
+         * Calculates the number of unique routes between two different locations. 
+         * Parameter:
+         *      string, start - The starting town for the routes to begin
+         *      string, stop - The ending town for the routes to end
+         *      int, maxStops - the maximum number of stops allowed in a route, including the ending town.
+         * Return:
+         *      int - The number of routes that are possible given the start and stop town.
          */
+        //TODO:
+        public int UniqueRoutes(string start, string stop, int maxStops)
+        {
+            return 0;//Temp
+        }
+
+
+
+        /* ShortestRoute(string, string)
+        * Calculates the weight of the shortest route between two different locations. 
+        * Parameter:
+        *      string, start - The starting town for the routes to begin
+        *      string, stop - The ending town for the routes to end
+        *      
+        * Return:
+        *      int - The weight of the shortest route between the start and stop towns.
+        */
+        //TODO:
+        public int ShortestRoute(string start, string stop)
+        {
+            return 0;//Temp
+        }
     }
 }
