@@ -1,0 +1,7 @@
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.csproj.AssemblyReference.cache
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.Form1.resources
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.csproj.GenerateResource.cache
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.GeneratedMSBuildEditorConfig.editorconfig
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.AssemblyInfoInputs.cache
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.AssemblyInfo.cs
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.csproj.CoreCompileInputs.cache
