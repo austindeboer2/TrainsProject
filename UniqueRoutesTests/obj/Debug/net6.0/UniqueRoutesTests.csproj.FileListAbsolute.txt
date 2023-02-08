@@ -1,0 +1,5 @@
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\UniqueRoutesTests\obj\Debug\net6.0\UniqueRoutesTests.csproj.AssemblyReference.cache
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\UniqueRoutesTests\obj\Debug\net6.0\UniqueRoutesTests.GeneratedMSBuildEditorConfig.editorconfig
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\UniqueRoutesTests\obj\Debug\net6.0\UniqueRoutesTests.AssemblyInfoInputs.cache
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\UniqueRoutesTests\obj\Debug\net6.0\UniqueRoutesTests.AssemblyInfo.cs
+\\win-fileB\Staff\ADeboer\22-23\TrainsProject\Trains\TrainsProject\UniqueRoutesTests\obj\Debug\net6.0\UniqueRoutesTests.csproj.CoreCompileInputs.cache

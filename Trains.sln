@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trains", "Trains\Trains.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A5F50E6-32EC-4E67-8347-113C6394BB2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteDistanceTests", "RouteDistanceTests\RouteDistanceTests.csproj", "{E1C6B066-01E8-43C7-AED8-099490C2A7EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteDistanceTests", "RouteDistanceTests\RouteDistanceTests.csproj", "{E1C6B066-01E8-43C7-AED8-099490C2A7EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniqueRoutesTests", "UniqueRoutesTests\UniqueRoutesTests.csproj", "{C2A0A5A2-822C-4618-ABE9-B92D32F7BB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortestRouteTests", "ShortestRouteTests\ShortestRouteTests.csproj", "{AF26D7B4-BF3D-40CC-AF10-668BDDAB2A9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{E1C6B066-01E8-43C7-AED8-099490C2A7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1C6B066-01E8-43C7-AED8-099490C2A7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1C6B066-01E8-43C7-AED8-099490C2A7EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A0A5A2-822C-4618-ABE9-B92D32F7BB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A0A5A2-822C-4618-ABE9-B92D32F7BB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A0A5A2-822C-4618-ABE9-B92D32F7BB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A0A5A2-822C-4618-ABE9-B92D32F7BB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF26D7B4-BF3D-40CC-AF10-668BDDAB2A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF26D7B4-BF3D-40CC-AF10-668BDDAB2A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF26D7B4-BF3D-40CC-AF10-668BDDAB2A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF26D7B4-BF3D-40CC-AF10-668BDDAB2A9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

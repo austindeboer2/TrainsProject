@@ -81,17 +81,37 @@ namespace Trains
         }
 
 
-        /* UniqueRoutes(string, string, int)
+        /* UniqueRoutes(string, string, int, bool)
          * Calculates the number of unique routes between two different locations. 
          * Parameter:
          *      string, start - The starting town for the routes to begin
          *      string, stop - The ending town for the routes to end
          *      int, maxStops - the maximum number of stops allowed in a route, including the ending town.
+         *      bool, exactStops - When true the number of routes returned will be only the number of routes 
+         *                         that have the exact amount of max stops allowed. When false the number 
+         *                         of routes returned will be for all routes at or under the max stops allowed.
          * Return:
          *      int - The number of routes that are possible given the start and stop town.
          */
         //TODO:
-        public int UniqueRoutes(string start, string stop, int maxStops)
+        public int UniqueRoutes(string start, string stop, int maxStops, bool exactStops)
+        {
+            return 0;//Temp
+        }
+
+
+        /* UniqueRoutes(string, string, int)
+         * Calculates the number of unique routes between two different locations with a weight less than 'maxDistance' 
+         * Parameter:
+         *      string, start - The starting town for the routes to begin
+         *      string, stop - The ending town for the routes to end
+         *      int, maxStops - the maximum weight allowed in a route
+         *      
+         * Return:
+         *      int - The number of routes that are possible given the start town, stop town, and distance allowed.
+         */
+        //TODO:
+        public int UniqueRoutes(string start, string stop, int maxDistance)
         {
             return 0;//Temp
         }
