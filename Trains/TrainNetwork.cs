@@ -17,10 +17,10 @@ namespace Trains
     internal class TrainNetwork
     {
         //Array of towns, listed as strings
-        public string[] towns;
+        private string[] towns;
 
         //2D array that keeps track of the weights and routes between towns
-        public int[,] weights;
+        private int[,] weights;
 
         /* TrainNetwork Constructor
          * 
@@ -39,7 +39,7 @@ namespace Trains
             {
                 towns[i] = townsL[i].ToString();
             }
-            
+
 
             //Instatiates weights to a square 2D array with sides the same length as towns.
             //All default values are set to 0.
@@ -78,19 +78,18 @@ namespace Trains
          *      int - the weight value of traveling along the given route.
          *            -1 will be returned if the route does not exist.
          */
-        //TODO:
         public int RouteDistance(string route)
         {
             int distance = 0;
             //Splits the given route into individual towns to visit in a string[].
             //Where locations[0] will be the starting location, locations[1] will be the first stop etc.
             string[] locations = route.Split('-');
-            
+
             //Copy of locations to hold the numeric values of the towns
             int[] locationNumbers = new int[locations.Length];
 
             //Loops through all the locations to asign them their numeric values
-            for(int i = 0; i < locations.Length; i++)
+            for (int i = 0; i < locations.Length; i++)
             {
                 //Used to make sure a town is found
                 bool found = false;
@@ -110,12 +109,12 @@ namespace Trains
                 //If no town with the same name is found the route cannot exist
                 if (found == false) return -1;
             }
-            
+
             //Loops through all the needed connections to establish the total distance.
-            for(int k = 1; k < locationNumbers.Length; k++)
+            for (int k = 1; k < locationNumbers.Length; k++)
             {
                 //checks to see if a route exists between locations
-                if (weights[locationNumbers[k-1],locationNumbers[k]] == 0) return -1;
+                if (weights[locationNumbers[k - 1], locationNumbers[k]] == 0) return -1;
 
                 //adds the distance between given locations
                 distance += weights[locationNumbers[k - 1], locationNumbers[k]];
@@ -140,9 +139,77 @@ namespace Trains
         //TODO:
         public int UniqueRoutes(string start, string stop, int maxStops, bool exactStops)
         {
-            return 0;//Temp
+            int begin = -1;
+            int end = -1;
+            for (int i = 0; i < towns.Length; i++)
+            {
+                if (start.Equals(towns[i])) begin = i;
+                if (stop.Equals(towns[i])) end = i;
+            }
+            if (begin == -1 || end == -1) return -1;
+
+            int routes = UniqueRoutes(begin, end, maxStops, exactStops);
+
+            return routes;
         }
 
+        //recursive method
+        public int UniqueRoutes(int start, int stop, int maxStops, bool exactStops)
+        {
+            if (maxStops == 0) return 0;
+
+            int routeCount = 0;
+
+            for (int i = 0; i < weights.GetLength(1); i++)
+            {
+                if (weights[start, i] != 0)
+                {
+                    if(i == stop)
+                    {
+                        if (exactStops)
+                        {
+                            if(maxStops == 1) routeCount++;
+                        }
+                        else routeCount++;
+                        routeCount += UniqueRoutes(i, stop, maxStops - 1, exactStops);
+                    }
+                    else
+                    {
+                        routeCount += UniqueRoutes(i, stop, maxStops - 1, exactStops);
+                    }
+                }
+            }
+            return routeCount;
+            /*
+            int branchesCount = 0;
+            for(int i = 0; i < weights.GetLength(0); i++)
+            {
+                if (weights[start,i] != 0) branchesCount++;
+            }
+            if (branchesCount == 0) return 0;
+
+            int[] stops = new int[branchesCount];
+            int a = 0;
+            for (int i = 0; i < weights.GetLength(0); i++)
+            {
+                if (weights[start, i] != 0)
+                {
+                    stops[a] = weights[start, i];
+                    a++;
+                }
+            }
+            int routes = 0;
+            for(int i = 0; i < stops.Length; i++)
+            {
+                if (stops[i] == stop) routes++;
+                if (maxStops - 1 > 0)
+                {
+                    routes += UniqueRoutes(stops[i], stop, maxStops - 1, exactStops);
+                }
+            }
+            return routes;
+            */
+        }
 
         /* UniqueRoutes(string, string, int)
          * Calculates the number of unique routes between two different locations with a weight less than 'maxDistance' 
