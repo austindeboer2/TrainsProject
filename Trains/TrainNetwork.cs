@@ -136,24 +136,40 @@ namespace Trains
          * Return:
          *      int - The number of routes that are possible given the start and stop town.
          */
-        //TODO:
         public int UniqueRoutes(string start, string stop, int maxStops, bool exactStops)
         {
+            //Sets the integer beginning and end to -1 to make sure we have actual towns the train visits
             int begin = -1;
             int end = -1;
+
+            //Loops through the given towns to figure out what index that are equal to
             for (int i = 0; i < towns.Length; i++)
             {
                 if (start.Equals(towns[i])) begin = i;
                 if (stop.Equals(towns[i])) end = i;
             }
+            //Verifies we have good towns, returns -1 if the towns do not exist
             if (begin == -1 || end == -1) return -1;
 
-            int routes = UniqueRoutes(begin, end, maxStops, exactStops);
+            //Calls the recursive sister function UniqueRoutes(int, int, int, bool) that will systematically
+            //go throught the weights array figuring out how many ways to reach the 'stop' town.
+            return UniqueRoutes(begin, end, maxStops, exactStops);
 
-            return routes;
+      
         }
 
-        //recursive method
+        /* UniqueRoutes(int, int, int, bool)
+         * Recursivly calculates the number of unique routes between two different locations. 
+         * Parameter:
+         *      int, start - The index of the starting town for the routes to begin
+         *      int, stop - The index of the ending town for the routes to end
+         *      int, maxStops - the maximum number of stops allowed in a route, including the ending town.
+         *      bool, exactStops - When true the number of routes returned will be only the number of routes 
+         *                         that have the exact amount of max stops allowed. When false the number 
+         *                         of routes returned will be for all routes at or under the max stops allowed.
+         * Return:
+         *      int - The number of routes that are possible given the start and stop town.
+         */
         public int UniqueRoutes(int start, int stop, int maxStops, bool exactStops)
         {
             if (maxStops == 0) return 0;
@@ -180,35 +196,6 @@ namespace Trains
                 }
             }
             return routeCount;
-            /*
-            int branchesCount = 0;
-            for(int i = 0; i < weights.GetLength(0); i++)
-            {
-                if (weights[start,i] != 0) branchesCount++;
-            }
-            if (branchesCount == 0) return 0;
-
-            int[] stops = new int[branchesCount];
-            int a = 0;
-            for (int i = 0; i < weights.GetLength(0); i++)
-            {
-                if (weights[start, i] != 0)
-                {
-                    stops[a] = weights[start, i];
-                    a++;
-                }
-            }
-            int routes = 0;
-            for(int i = 0; i < stops.Length; i++)
-            {
-                if (stops[i] == stop) routes++;
-                if (maxStops - 1 > 0)
-                {
-                    routes += UniqueRoutes(stops[i], stop, maxStops - 1, exactStops);
-                }
-            }
-            return routes;
-            */
         }
 
         /* UniqueRoutes(string, string, int)
