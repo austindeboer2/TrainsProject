@@ -111,6 +111,7 @@ namespace Trains
                 if (found == false) return -1;
             }
             
+            //Loops through all the needed connections to establish the total distance.
             for(int k = 1; k < locationNumbers.Length; k++)
             {
                 //checks to see if a route exists between locations
