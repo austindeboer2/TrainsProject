@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Trains;
 
 namespace RouteDistanceTests
@@ -42,7 +43,7 @@ namespace RouteDistanceTests
         [Test]
         public void Test1()
         {
-            if(trainNetwork.RouteDistance("A-B-C") == 9) Assert.Pass();
+            if (trainNetwork.RouteDistance("A-B-C") == 9) Assert.Pass();
             Assert.Fail("RouteDistance(\"A-B-C\") Failed. EV: 9, AV: " + trainNetwork.RouteDistance("A-B-C"));
         }
 

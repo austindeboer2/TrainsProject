@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "\\\\win-fileB\\Staff\\ADeboer\\22-23\\TrainsProject\\Trains\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj": {}
+    "C:\\Users\\adeboer\\Downloads\\TrainTest\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj": {}
   },
   "projects": {
-    "\\\\win-fileB\\Staff\\ADeboer\\22-23\\TrainsProject\\Trains\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj": {
+    "C:\\Users\\adeboer\\Downloads\\TrainTest\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\win-fileB\\Staff\\ADeboer\\22-23\\TrainsProject\\Trains\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj",
+        "projectUniqueName": "C:\\Users\\adeboer\\Downloads\\TrainTest\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj",
         "projectName": "UniqueRoutesTests",
-        "projectPath": "\\\\win-fileB\\Staff\\ADeboer\\22-23\\TrainsProject\\Trains\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj",
+        "projectPath": "C:\\Users\\adeboer\\Downloads\\TrainTest\\TrainsProject\\UniqueRoutesTests\\UniqueRoutesTests.csproj",
         "packagesPath": "C:\\Users\\adeboer\\.nuget\\packages\\",
-        "outputPath": "\\\\win-fileB\\Staff\\ADeboer\\22-23\\TrainsProject\\Trains\\TrainsProject\\UniqueRoutesTests\\obj\\",
+        "outputPath": "C:\\Users\\adeboer\\Downloads\\TrainTest\\TrainsProject\\UniqueRoutesTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

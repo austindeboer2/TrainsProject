@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,11 +17,10 @@ namespace Trains
     internal class TrainNetwork
     {
         //Array of towns, listed as strings
-        private string[] towns;
+        public string[] towns;
 
         //2D array that keeps track of the weights and routes between towns
-        private int[,] weights;
-
+        public int[,] weights;
 
         /* TrainNetwork Constructor
          * 
@@ -34,17 +34,21 @@ namespace Trains
          */
         public TrainNetwork(List<string> townsL, List<Connection> connections)
         {
-            towns = townsL.ToArray();
+            towns = new string[townsL.Count];
+            for (int i = 0; i < townsL.Count; i++)
+            {
+                towns[i] = townsL[i].ToString();
+            }
+            
 
             //Instatiates weights to a square 2D array with sides the same length as towns.
             //All default values are set to 0.
-            this.weights = new int[connections.Count, connections.Count];
+            weights = new int[towns.Length, towns.Length];
 
             foreach (Connection c in connections)
             {
                 int start = 0;
                 int end = 0;
-                int weight = 0;
 
                 //Loops though all the towns to make sure the correct towns are recorded 
                 //to mark the weight in the table.
@@ -59,7 +63,7 @@ namespace Trains
                 if (start != end)
                 {
                     //Sets the weight of the connection in the corresponding space in the weights array.
-                    weights[start, end] = weight;
+                    weights[start, end] = c.GetWeight();
                 }
 
             }
@@ -77,7 +81,46 @@ namespace Trains
         //TODO:
         public int RouteDistance(string route)
         {
-            return 0;//Temp
+            int distance = 0;
+            //Splits the given route into individual towns to visit in a string[].
+            //Where locations[0] will be the starting location, locations[1] will be the first stop etc.
+            string[] locations = route.Split('-');
+            
+            //Copy of locations to hold the numeric values of the towns
+            int[] locationNumbers = new int[locations.Length];
+
+            //Loops through all the locations to asign them their numeric values
+            for(int i = 0; i < locations.Length; i++)
+            {
+                //Used to make sure a town is found
+                bool found = false;
+                //Loops through all the towns to check where they exist
+                for (int j = 0; j < towns.Length; j++)
+                {
+                    //Checks if the town was found at index j
+                    if (locations[i].Equals(towns[j]))
+                    {
+                        //Assignes the numeric value of the town to the array
+                        locationNumbers[i] = j;
+                        //Assigns that the town has been found
+                        found = true;
+                    }
+                }
+
+                //If no town with the same name is found the route cannot exist
+                if (found == false) return -1;
+            }
+            
+            for(int k = 1; k < locationNumbers.Length; k++)
+            {
+                //checks to see if a route exists between locations
+                if (weights[locationNumbers[k-1],locationNumbers[k]] == 0) return -1;
+
+                //adds the distance between given locations
+                distance += weights[locationNumbers[k - 1], locationNumbers[k]];
+            }
+
+            return distance;
         }
 
 

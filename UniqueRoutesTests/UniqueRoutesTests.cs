@@ -36,6 +36,7 @@ namespace UniqueRoutesTests
 
             //Creating the network from the towns and connections
             trainNetwork = new TrainNetwork(towns, connections);
+            
         }
 
         //Test output 6

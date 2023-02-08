@@ -2,7 +2,7 @@ using Trains;
 
 namespace ShortestRouteTests
 {
-    public class Tests
+    public class SRTests
     {
         //Towns that exist in test network
         List<string> towns;
