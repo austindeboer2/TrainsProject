@@ -21,8 +21,7 @@ namespace Trains
         //Weight on this connection
         private int weight { get; }
 
-        /*
-         * Connection Constructor
+        /* Connection Constructor
          * Parameters:
          *      String containing the starting town for the connection
          *      String containing the ending town for the connection
