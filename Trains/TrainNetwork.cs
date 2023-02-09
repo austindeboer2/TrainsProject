@@ -377,5 +377,15 @@ namespace Trains
             }
             return min_index;
         }
+
+        public int[,] GetWeights()
+        {
+            return weights;
+        }
+
+        public string[] GetTowns()
+        {
+            return towns;
+        }
     }
 }

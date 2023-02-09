@@ -17,19 +17,22 @@ namespace Trains
 
         private void AddTownBtn_Click(object sender, EventArgs e)
         {
-            towns.Add(newTown.Text);
-
-            townsList.Text = "";
-
-            foreach(string t in towns)
+            if (!newTown.Text.Equals(""))
             {
-                townsList.AppendText(t);
-                townsList.AppendText(Environment.NewLine);
-            }
+                towns.Add(newTown.Text);
 
-            startConnect.Items.Add(newTown.Text);
-            stopConnect.Items.Add(newTown.Text);
-            newTown.Text = "";
+                townsList.Text = "";
+
+                foreach (string t in towns)
+                {
+                    townsList.AppendText(t);
+                    townsList.AppendText(Environment.NewLine);
+                }
+
+                startConnect.Items.Add(newTown.Text);
+                stopConnect.Items.Add(newTown.Text);
+                newTown.Text = "";
+            }
         }
 
         private void GenNetwork_Click(object sender, EventArgs e)
