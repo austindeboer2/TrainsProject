@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+//using static System.Windows.Forms.AxHost;
 
 namespace Trains
 {
@@ -14,13 +16,14 @@ namespace Trains
      * This information is then used to provide methods to determine route distance, 
      * unique routes between towns, and the shortest route between towns. 
      */
-    internal class TrainNetwork
+    public class TrainNetwork
     {
         //Array of towns, listed as strings
         private string[] towns;
 
         //2D array that keeps track of the weights and routes between towns
         private int[,] weights;
+
 
         /* TrainNetwork Constructor
          * 
@@ -35,6 +38,7 @@ namespace Trains
         public TrainNetwork(List<string> townsL, List<Connection> connections)
         {
             towns = new string[townsL.Count];
+
             for (int i = 0; i < townsL.Count; i++)
             {
                 towns[i] = townsL[i].ToString();
@@ -47,20 +51,12 @@ namespace Trains
 
             foreach (Connection c in connections)
             {
-                int start = 0;
-                int end = 0;
-
-                //Loops though all the towns to make sure the correct towns are recorded 
-                //to mark the weight in the table.
-                for (int i = 0; i < towns.Length; i++)
-                {
-                    if (c.GetStart().Equals(towns[i])) start = i;
-                    if (c.GetEnd().Equals(towns[i])) end = i;
-                }
+                int start = GetTownIndex(c.GetStart()); 
+                int end = GetTownIndex(c.GetEnd());
 
                 //Checks to make sure that a bad connection was not given with that same
-                //starting and ending location
-                if (start != end)
+                //starting and ending location and that real towns were given.
+                if (start != end && start != -1 && end != -1)
                 {
                     //Sets the weight of the connection in the corresponding space in the weights array.
                     weights[start, end] = c.GetWeight();
@@ -138,21 +134,15 @@ namespace Trains
          */
         public int UniqueRoutes(string start, string stop, int maxStops, bool exactStops)
         {
-            //Sets the integer beginning and end to -1 to make sure we have actual towns the train visits
-            int begin = -1;
-            int end = -1;
+            //Gets the index of the towns to start the calculations
+            int begin = GetTownIndex(start);
+            int end = GetTownIndex(stop);
 
-            //Loops through the given towns to figure out what index that are equal to
-            for (int i = 0; i < towns.Length; i++)
-            {
-                if (start.Equals(towns[i])) begin = i;
-                if (stop.Equals(towns[i])) end = i;
-            }
             //Verifies we have good towns, returns -1 if the towns do not exist
             if (begin == -1 || end == -1) return -1;
 
             //Calls the recursive sister function UniqueRoutes(int, int, int, bool) that will systematically
-            //go throught the weights array figuring out how many ways to reach the 'stop' town.
+            //go throught the 'weights' array figuring out how many ways to reach the 'stop' town.
             return UniqueRoutes(begin, end, maxStops, exactStops);
 
       
@@ -170,7 +160,7 @@ namespace Trains
          * Return:
          *      int - The number of routes that are possible given the start and stop town.
          */
-        public int UniqueRoutes(int start, int stop, int maxStops, bool exactStops)
+        private int UniqueRoutes(int start, int stop, int maxStops, bool exactStops)
         {
             if (maxStops == 0) return 0;
 
@@ -199,7 +189,7 @@ namespace Trains
         }
 
         /* UniqueRoutes(string, string, int)
-         * Calculates the number of unique routes between two different locations with a weight less than 'maxDistance' 
+         * Translates the string towns into integers for the sister method to calculate the number of routes.
          * Parameter:
          *      string, start - The starting town for the routes to begin
          *      string, stop - The ending town for the routes to end
@@ -208,27 +198,184 @@ namespace Trains
          * Return:
          *      int - The number of routes that are possible given the start town, stop town, and distance allowed.
          */
-        //TODO:
+
         public int UniqueRoutes(string start, string stop, int maxDistance)
         {
-            return 0;//Temp
+            //Gets the index of the towns to start the calculations
+            int begin = GetTownIndex(start);
+            int end = GetTownIndex(stop);
+
+            //Verifies we have good towns, returns -1 if the towns do not exist
+            if (begin == -1 || end == -1) return -1;
+
+            //Calls the recursive sister function UniqueRoutes(int, int, int) that will systematically
+            //go throught the 'weights' array figuring out how many ways to reach the 'stop' town.
+            return UniqueRoutes(begin, end, maxDistance);
+        }
+
+
+        /* UniqueRoutes(int, int, int)
+         * Recursivly calculates the number of unique routes between two different locations with a weight less than 'maxDistance' 
+         * Parameter:
+         *      int, start - The starting town for the routes to begin
+         *      int, stop - The ending town for the routes to end
+         *      int, maxStops - the maximum weight allowed in a route
+         *      
+         * Return:
+         *      int - The number of routes that are possible given the start town, stop town, and distance allowed.
+         */
+        private int UniqueRoutes(int start, int stop, int maxDistance)
+        {
+            if (maxDistance <= 0) return 0;
+
+            int routeCount = 0;
+
+            for (int i = 0; i < weights.GetLength(1); i++)
+            {
+                if (weights[start, i] != 0)
+                {
+                    if (i == stop && maxDistance - weights[start, i] > 0)
+                    {
+                        routeCount++;
+                        routeCount += UniqueRoutes(i, stop, maxDistance - weights[start, i]);
+                    }
+                    else
+                    {
+                        routeCount += UniqueRoutes(i, stop, maxDistance - weights[start, i]);
+                    }
+                }
+            }
+            return routeCount;
         }
 
 
 
         /* ShortestRoute(string, string)
-        * Calculates the weight of the shortest route between two different locations. 
+        * Calculates the weight of the shortest route between two different locations using dijkstra's algorithm. 
         * Parameter:
         *      string, start - The starting town for the routes to begin
         *      string, stop - The ending town for the routes to end
         *      
         * Return:
         *      int - The weight of the shortest route between the start and stop towns.
+        *            Returns -1 if one of the towns doesn't exist or a route does not exist.
         */
-        //TODO:
         public int ShortestRoute(string start, string stop)
         {
-            return 0;//Temp
+            int begin = GetTownIndex(start);
+            int end = GetTownIndex(stop);
+
+            if (begin == -1 || end == -1) return -1;
+
+            //dist will store the shortest distances to any location from the start.
+            int[] dist = new int[towns.Length]; 
+                          
+
+            // sptSet[i], shortest path tree set, will true if vertex i is included in shortest path
+            // tree or shortest distance from begin to i is finalized
+            bool[] sptSet = new bool[towns.Length];
+
+            // Initialize all distances as
+            // INFINITE and stpSet[] as false
+            for (int i = 0; i < towns.Length; i++)
+            {
+                dist[i] = int.MaxValue;
+                sptSet[i] = false;
+            }
+
+            // Distance of source vertex
+            // from itself is always 0
+            dist[begin] = 0;
+
+            // Find shortest path for all vertices
+            for (int count = 0; count < towns.Length - 1; count++)
+            {
+                // Pick the minimum distance vertex
+                // from the set of vertices not yet
+                // processed. u is always equal to
+                // begin in first iteration.
+                int u = MinDistance(dist, sptSet);
+
+                // Mark the picked vertex as processed
+                sptSet[u] = true;
+
+                // Update dist value of the adjacent
+                // vertices of the picked vertex.
+                for (int v = 0; v < towns.Length; v++)
+                {
+                    // Update dist[v] only if is not in
+                    // sptSet, there is an edge from u
+                    // to v, and total weight of path
+                    // from begin to v through u is smaller
+                    // than current value of dist[v]
+                    if (!sptSet[v] && weights[u, v] != 0
+                        && dist[u] != int.MaxValue
+                        && dist[u] + weights[u, v] < dist[v])
+                        dist[v] = dist[u] + weights[u, v];
+                }
+            }
+
+            
+            if(begin != end) return dist[end];
+
+            /*
+             * If you are trying to find the shortest loop (meaning the start and stop are the same location)
+             * you are not able to just use dijkstra's algorithm as it views the same location as distance 0. 
+             * Therefore the remainder of this method takes one step back from the end location and finds the 
+             * shortest path using dijkstra's algorithm to that location and then the weight of the graph to the final stop.
+             */
+            int lowestValue = -1;
+
+            for(int i = 0; i < weights.GetLength(1); i++)
+            {
+                if(weights[i, end] != 0 && dist[i] != int.MaxValue)
+                {
+                    if(lowestValue == -1 || dist[i] + weights[i, end] < lowestValue)
+                    {
+                        lowestValue = dist[i] + weights[i, end];
+                    }
+                }
+            }
+            
+            return lowestValue;
+            
+        }
+
+
+
+
+        /******************
+         * Helper Methods
+         ******************/
+
+        //Takes town name and returns the index it is found in the 'towns' array
+        //Returns -1 if the town is not found.
+        private int GetTownIndex(string townName)
+        {
+            int index = -1;
+            for (int i = 0; i < towns.Length; i++)
+            {
+                if (townName.Equals(towns[i])) index = i;
+            }
+            return index;
+        }
+
+
+        private int MinDistance(int[] dist, bool[] sptSet)
+        {
+            // Initialize min value
+            int min = int.MaxValue, min_index = -1;
+
+            for (int v = 0; v < towns.Length; v++)
+            {
+                if (sptSet[v] == false && dist[v] <= min)
+                {
+                    min = dist[v];
+                    min_index = v;
+                }
+
+            }
+            return min_index;
         }
     }
 }

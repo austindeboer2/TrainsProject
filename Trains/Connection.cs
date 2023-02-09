@@ -10,7 +10,7 @@ namespace Trains
      * Class, Connection, structures a single network connection to be used in 
      * making the TrainNetwork.
      */
-    internal class Connection
+    public class Connection
     {
         //Starting town for the train connection
         private string start { get; }

@@ -22,3 +22,21 @@ C:\Users\adeboer\Downloads\TrainTest\TrainsProject\Trains\obj\Debug\net6.0-windo
 C:\Users\adeboer\Downloads\TrainTest\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.pdb
 C:\Users\adeboer\Downloads\TrainTest\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.genruntimeconfig.cache
 C:\Users\adeboer\Downloads\TrainTest\TrainsProject\Trains\obj\Debug\net6.0-windows\ref\Trains.dll
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\bin\Debug\net6.0-windows\Trains.exe
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\bin\Debug\net6.0-windows\Trains.deps.json
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\bin\Debug\net6.0-windows\Trains.runtimeconfig.json
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\bin\Debug\net6.0-windows\Trains.dll
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\bin\Debug\net6.0-windows\Trains.pdb
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.csproj.AssemblyReference.cache
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.Form1.resources
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.csproj.GenerateResource.cache
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.AssemblyInfoInputs.cache
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.AssemblyInfo.cs
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.csproj.CoreCompileInputs.cache
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.dll
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\refint\Trains.dll
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.pdb
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.genruntimeconfig.cache
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\ref\Trains.dll
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.NetworkSim.resources
