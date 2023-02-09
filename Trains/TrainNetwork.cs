@@ -16,7 +16,7 @@ namespace Trains
      * This information is then used to provide methods to determine route distance, 
      * unique routes between towns, and the shortest route between towns. 
      */
-    internal class TrainNetwork
+    public class TrainNetwork
     {
         //Array of towns, listed as strings
         private string[] towns;

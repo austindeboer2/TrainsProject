@@ -39,3 +39,4 @@ C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignmen
 C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.pdb
 C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.genruntimeconfig.cache
 C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\ref\Trains.dll
+C:\Users\yello\OneDrive - Rockford Public Schools\Intro to Programming\Assignments and Projects\TestingProjects\TrainsProject\Trains\obj\Debug\net6.0-windows\Trains.NetworkSim.resources
