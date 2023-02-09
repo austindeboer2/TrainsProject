@@ -52,38 +52,47 @@ namespace Trains
         //Generate Network Btn
         private void GenNetwork_Click(object sender, EventArgs e)
         {
-            //Opens the network simulation form with the given information
-            this.Hide();
-            NetworkSim sim = new NetworkSim(new TrainNetwork(towns, connections));
-            sim.Show();
+            //Only lets you generate the network if there is at least one town name in the list
+            if (towns.Count != 0)
+            {
+                //Opens the network simulation form with the given information
+                this.Hide();
+                NetworkSim sim = new NetworkSim(new TrainNetwork(towns, connections));
+                sim.Show();
+            }
         }
 
         //Add Connection Btn
         private void AddConnection_Click(object sender, EventArgs e)
         {
-            try
+            string start = this.startConnect.GetItemText(this.startConnect.SelectedItem);
+            string stop = this.stopConnect.GetItemText(this.stopConnect.SelectedItem);
+            if (start != "" && stop != "")
             {
-                //Trys the code just incase a number is not selected properly so the app doesnt crash
-                int weight = 0;
-                weight = Convert.ToInt32(this.weightConnect.GetItemText(this.weightConnect.SelectedItem));
-
-
-                //Bad connections will be deleted when the network is created
-                if(weight != 0) connections.Add(new Connection(this.startConnect.GetItemText(this.startConnect.SelectedItem), this.stopConnect.GetItemText(this.stopConnect.SelectedItem), weight));
-
-                connectionText.Text = "";
-                //Adds all the connections for the user to see
-                //Adds all the connections for the user to see
-                foreach(Connection c in connections)
+                try
                 {
-                    connectionText.AppendText("Start: " + c.GetStart() + " Stop: " + c.GetEnd() + " Weight: " + c.GetWeight());
-                    connectionText.AppendText(Environment.NewLine);
-                }
-                
-            }
-            catch(Exception exc)
-            {
+                    //Trys the code just incase a number is not selected properly so the app doesnt crash
+                    int weight = 0;
+                    weight = Convert.ToInt32(this.weightConnect.GetItemText(this.weightConnect.SelectedItem));
 
+
+                    //Bad connections will be deleted when the network is created
+                    if (weight != 0) connections.Add(new Connection(start, stop, weight));
+
+                    connectionText.Text = "";
+                    //Adds all the connections for the user to see
+                    //Adds all the connections for the user to see
+                    foreach (Connection c in connections)
+                    {
+                        connectionText.AppendText("Start: " + c.GetStart() + " Stop: " + c.GetEnd() + " Weight: " + c.GetWeight());
+                        connectionText.AppendText(Environment.NewLine);
+                    }
+
+                }
+                catch (Exception exc)
+                {
+
+                }
             }
             
         }
