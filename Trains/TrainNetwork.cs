@@ -160,7 +160,7 @@ namespace Trains
          * Return:
          *      int - The number of routes that are possible given the start and stop town.
          */
-        public int UniqueRoutes(int start, int stop, int maxStops, bool exactStops)
+        private int UniqueRoutes(int start, int stop, int maxStops, bool exactStops)
         {
             if (maxStops == 0) return 0;
 
@@ -224,7 +224,7 @@ namespace Trains
          * Return:
          *      int - The number of routes that are possible given the start town, stop town, and distance allowed.
          */
-        public int UniqueRoutes(int start, int stop, int maxDistance)
+        private int UniqueRoutes(int start, int stop, int maxDistance)
         {
             if (maxDistance <= 0) return 0;
 
@@ -251,15 +251,15 @@ namespace Trains
 
 
         /* ShortestRoute(string, string)
-        * Calculates the weight of the shortest route between two different locations. 
+        * Calculates the weight of the shortest route between two different locations using dijkstra's algorithm. 
         * Parameter:
         *      string, start - The starting town for the routes to begin
         *      string, stop - The ending town for the routes to end
         *      
         * Return:
         *      int - The weight of the shortest route between the start and stop towns.
+        *            Returns -1 if one of the towns doesn't exist or a route does not exist.
         */
-        //TODO: FIX COMMENTS
         public int ShortestRoute(string start, string stop)
         {
             int begin = GetTownIndex(start);
@@ -267,14 +267,12 @@ namespace Trains
 
             if (begin == -1 || end == -1) return -1;
 
-            int[] dist = new int[towns.Length]; // The output array. dist[i]
-                          // will hold the shortest
-                          // distance from begin to i
+            //dist will store the shortest distances to any location from the start.
+            int[] dist = new int[towns.Length]; 
+                          
 
-            // sptSet[i] will true if vertex
-            // i is included in shortest path
-            // tree or shortest distance from
-            // begin to i is finalized
+            // sptSet[i], shortest path tree set, will true if vertex i is included in shortest path
+            // tree or shortest distance from begin to i is finalized
             bool[] sptSet = new bool[towns.Length];
 
             // Initialize all distances as
@@ -304,7 +302,7 @@ namespace Trains
                 // Update dist value of the adjacent
                 // vertices of the picked vertex.
                 for (int v = 0; v < towns.Length; v++)
-
+                {
                     // Update dist[v] only if is not in
                     // sptSet, there is an edge from u
                     // to v, and total weight of path
@@ -314,11 +312,18 @@ namespace Trains
                         && dist[u] != int.MaxValue
                         && dist[u] + weights[u, v] < dist[v])
                         dist[v] = dist[u] + weights[u, v];
+                }
             }
 
             
             if(begin != end) return dist[end];
-            
+
+            /*
+             * If you are trying to find the shortest loop (meaning the start and stop are the same location)
+             * you are not able to just use dijkstra's algorithm as it views the same location as distance 0. 
+             * Therefore the remainder of this method takes one step back from the end location and finds the 
+             * shortest path using dijkstra's algorithm to that location and then the weight of the graph to the final stop.
+             */
             int lowestValue = -1;
 
             for(int i = 0; i < weights.GetLength(1); i++)
@@ -345,7 +350,7 @@ namespace Trains
 
         //Takes town name and returns the index it is found in the 'towns' array
         //Returns -1 if the town is not found.
-        public int GetTownIndex(string townName)
+        private int GetTownIndex(string townName)
         {
             int index = -1;
             for (int i = 0; i < towns.Length; i++)
@@ -356,18 +361,20 @@ namespace Trains
         }
 
 
-        int MinDistance(int[] dist, bool[] sptSet)
+        private int MinDistance(int[] dist, bool[] sptSet)
         {
             // Initialize min value
             int min = int.MaxValue, min_index = -1;
 
             for (int v = 0; v < towns.Length; v++)
+            {
                 if (sptSet[v] == false && dist[v] <= min)
                 {
                     min = dist[v];
                     min_index = v;
                 }
 
+            }
             return min_index;
         }
     }
