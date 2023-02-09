@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueRoutesTests", "Unique
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShortestRouteTests", "ShortestRouteTests\ShortestRouteTests.csproj", "{AF26D7B4-BF3D-40CC-AF10-668BDDAB2A9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteDistanceTests", "RouteDistanceTests\RouteDistanceTests.csproj", "{065675CF-116C-49F1-A09A-878F137F6B18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteDistanceTests", "RouteDistanceTests\RouteDistanceTests.csproj", "{065675CF-116C-49F1-A09A-878F137F6B18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdditionalTests", "AdditionalTests\AdditionalTests.csproj", "{5D712DA1-C17A-45F1-9054-3FCA8BA35878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{065675CF-116C-49F1-A09A-878F137F6B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{065675CF-116C-49F1-A09A-878F137F6B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{065675CF-116C-49F1-A09A-878F137F6B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D712DA1-C17A-45F1-9054-3FCA8BA35878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D712DA1-C17A-45F1-9054-3FCA8BA35878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D712DA1-C17A-45F1-9054-3FCA8BA35878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D712DA1-C17A-45F1-9054-3FCA8BA35878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
