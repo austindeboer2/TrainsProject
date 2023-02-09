@@ -56,7 +56,6 @@
             // 
             // weightsTable
             // 
-            this.weightsTable.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.weightsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.weightsTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.weightsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

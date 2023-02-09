@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Trains
 {
+    //Creates the simulation for the use the created network
     public partial class NetworkSim : Form
     {
         TrainNetwork tn;
@@ -22,11 +23,14 @@ namespace Trains
             this.tn = tn;
             weights = tn.GetWeights();
             towns = tn.GetTowns();
+
+            //Sets up the data table
             weightsTable.Rows.Clear();
             weightsTable.Columns.Clear();
             weightsTable.ColumnCount = weights.GetLength(1);
             weightsTable.RowCount = weights.GetLength(0);
 
+            //Sets the data tables entries
             for(int i = 0; i < weights.GetLength(0); i++)
             {
                 for(int j = 0; j < weights.GetLength(1); j++)
@@ -34,6 +38,8 @@ namespace Trains
                     weightsTable[i,j].Value = weights[i, j];
                 }
             }
+
+            //Sets data table headers with towns and fills drop downs with acceptable towns. 
             for(int i = 0; i < weights.GetLength(0); i++)
             {
                 weightsTable.Columns[i].HeaderText = "(Start) " + towns[i];
@@ -54,18 +60,21 @@ namespace Trains
         }
 
 
-
+        //Generate Route Distance
         private void GenRouteDist_Click(object sender, EventArgs e)
         {
             routeDistOutput.Text = tn.RouteDistance(routeDistInput.Text).ToString();
+            //Checks to see if the route exists
             if (routeDistOutput.Text.Equals("-1")) routeDistOutput.Text = "NO SUCH ROUTE";
         }
 
+        //Generate Unique Routes
         private void GenUnique_Click(object sender, EventArgs e)
         {
             string start = "";
             string stop = "";
             int dist = 0;
+            //Trys combo box value retrivial to make sure the program does not crash
             try
             {
                 start = this.startDrop.GetItemText(this.startDrop.SelectedItem);
@@ -73,28 +82,37 @@ namespace Trains
                 dist = Convert.ToInt32(this.numberDrop.GetItemText(this.numberDrop.SelectedItem));
             }
             catch(Exception ex) { }
+
+            //If the users wants the exact stops option
             if (this.exactDrop.GetItemText(this.exactDrop.SelectedItem).Equals("Exact Stops"))
             {
                 uniqueOutput.Text = tn.UniqueRoutes(start, stop, dist, true).ToString();
                 
             }
+
+            //If the users wants the max distance option
             else if (this.exactDrop.GetItemText(this.exactDrop.SelectedItem).Equals("Max Distance"))
             {
                 uniqueOutput.Text = tn.UniqueRoutes(start, stop, dist).ToString();
             }
+
+            //Defaults to any route under max stops
             else
             {
                 uniqueOutput.Text = tn.UniqueRoutes(start, stop, dist, false).ToString();
             }
+            //Checks to see if the route exists
             if (uniqueOutput.Text.Equals("-1")) uniqueOutput.Text = "NO SUCH ROUTE";
         }
 
+        //Generate Shortest Route
         private void GenShortRoute_Click(object sender, EventArgs e)
         {
             string start = this.startDrop2.GetItemText(this.startDrop2.SelectedItem);
             string stop = this.stopDrop2.GetItemText(this.stopDrop2.SelectedItem);
 
             shortOutput.Text = tn.ShortestRoute(start, stop).ToString();
+            //Checks to see if the route exists
             if (shortOutput.Text.Equals("-1")) shortOutput.Text = "NO SUCH ROUTE";
 
         }
