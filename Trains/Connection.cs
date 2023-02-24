@@ -13,13 +13,13 @@ namespace Trains
     public class Connection
     {
         //Starting town for the train connection
-        private string start { get; }
-        
+        private string start;
+
         //Ending town for the train connection, cannot be the same as the starting town
-        private string end { get; }
-        
+        private string end;
+
         //Weight on this connection
-        private int weight { get; }
+        private int weight;
 
         /* Connection Constructor
          * Parameters:

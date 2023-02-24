@@ -314,8 +314,12 @@ namespace Trains
                 }
             }
 
-            
-            if(begin != end) return dist[end];
+
+            if (begin != end)
+            {
+                if (dist[end] != int.MaxValue) return dist[end];
+                else return -1;
+            }
 
             /*
              * If you are trying to find the shortest loop (meaning the start and stop are the same location)
